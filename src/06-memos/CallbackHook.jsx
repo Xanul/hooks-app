@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { ShowIncrement } from "./ShowIncrement";
 
 export const CallbackHook = () => {
@@ -6,12 +6,18 @@ export const CallbackHook = () => {
   const [counter, setCounter] = useState(10);
   
   const incrementFather = useCallback(
-    (value) => {
-  
-      setCounter((c) => c + value);
+    (arg) => {  
+      console.log('Clicked');
+      console.log(arg);
+      setCounter((c) => c + arg);
     },
     [],
   )
+
+    // useEffect(() => {
+    //   incrementFather();
+    // }, [incrementFather])
+    
 
   // const incrementFather = () => {
   //   setCounter(counter + 1);
@@ -19,7 +25,7 @@ export const CallbackHook = () => {
   
   return (
     <>
-      <h1>useCallback Hook: {counter}</h1>
+      <h1>useCallback Hook: { counter }</h1>
       <hr />
 
       <ShowIncrement increment={incrementFather}/>      
