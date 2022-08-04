@@ -1,12 +1,6 @@
 import { useState } from "react";
 
 export const useForm = (initialForm = {}) => {
-  
-  // {
-  //   username: '',
-  //   email: '',
-  //   password: ''
-  // }
 
   const [formState, setFormState] = useState(initialForm);
 
