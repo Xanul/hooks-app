@@ -1,6 +1,11 @@
 
 export const TodoItem = ({todo, onDeleteTodo, onToggleTodo}) => {
 
+  const todoMock = {
+    id: 1,
+    description: 'Piedra de la felicidad',
+  }
+
   return (
     <li className="list-group-item d-flex justify-content-between">
       <span 

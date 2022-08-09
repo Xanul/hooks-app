@@ -1,12 +1,11 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { TodoItem } from "../../src/08-useReducer/TodoItem";
 
-describe('Pruebnas en el componente <TodoItem />', () => {
-
+describe("Pruebnas en el componente <TodoItem />", () => {
   const todo = {
-    id: 1,
-    description: 'Piedra de la memoria',
-    done: false
+    id: 2,
+    description: "Piedra de la felicidad",
+    done: false,
   };
 
   const onDeleteTodoMock = jest.fn();
@@ -14,69 +13,67 @@ describe('Pruebnas en el componente <TodoItem />', () => {
 
   beforeEach(() => jest.clearAllMocks());
 
-  test('Debe de mostrar el Todo pendiente de completar', () => {
+  test("Debe de mostrar el todo pendiente de completar", () => {
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
 
-    render( <TodoItem 
-              todo={todo} 
-              onToggleTodo={onToggleTodoMock} 
-              onDeleteTodo={onDeleteTodoMock}
-            /> );
+    const liItem = screen.getByRole("listitem");
+    expect(liItem.className).toBe(
+      "list-group-item d-flex justify-content-between"
+    );
 
-    const liElement = screen.getByRole('listitem');
-    // console.log(liElement.innerHTML);
-    expect(liElement.className).toBe('list-group-item d-flex justify-content-between');
-    
-    const spanElement = screen.getByLabelText('span');
-    expect(spanElement.className).toContain('align-self-center');
-    // screen.debug();
-
+    const spanElement = screen.getByLabelText("span");
+    expect(spanElement.className).toContain("align-self-center");
   });
 
-  test('Debe de mostrar el Todo completado', () => {
-
+  test("Debe de mostrar el todo completado", () => {
     todo.done = true;
 
-    render( <TodoItem 
-              todo={todo} 
-              onToggleTodo={onToggleTodoMock} 
-              onDeleteTodo={onDeleteTodoMock}
-            /> );
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
 
-    
-    const spanElement = screen.getByLabelText('span');
-    expect(spanElement.className).toContain('text-decoration-line-through');
-
+    const spanElement = screen.getByLabelText("span");
+    expect(spanElement.className).toContain("text-decoration-line-through");
   });
 
-  test('Span debe de llamar el ToggleTodo cuando se hace click', () => {
+  test("El span debe de llamar el ToggleTodo cuando se hace click", () => {
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
 
-    render( <TodoItem 
-              todo={todo} 
-              onToggleTodo={onToggleTodoMock} 
-              onDeleteTodo={onDeleteTodoMock}
-            /> );
-
-    
-    const spanElement = screen.getByLabelText('span');
+    const spanElement = screen.getByLabelText("span");
     fireEvent.click(spanElement);
-
-    expect(onToggleTodoMock).toHaveBeenCalledWith( todo.id );
+    expect(onToggleTodoMock).toHaveBeenCalledWith(todo.id);
 
   });
 
-  test('El boton debe de llamar el deleteTodo', () => {
+  test("El boton debe de llamar el deleteTodo", () => {
 
-    render( <TodoItem 
-              todo={todo} 
-              onToggleTodo={onToggleTodoMock} 
-              onDeleteTodo={onDeleteTodoMock}
-            /> );
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
 
-    
-    const deleteBtn = screen.getByRole('button', {name: 'Delete'});
+    const deleteBtn = screen.getByRole('button');
     fireEvent.click(deleteBtn);
-
-    expect(onDeleteTodoMock).toHaveBeenCalledWith( todo.id );
+    expect(onDeleteTodoMock).toHaveBeenCalledWith(2);
 
   });
 
