@@ -3,14 +3,9 @@ import { BBQuote } from "./BBQuote.jsx";
 import { LoadingQuote } from "./LoadingQuote.jsx";
 
 export const MultipleCustomHooks = () => {
+
   const { counter, increment } = useCounter(1);
-
-  const { data, isLoading, hasError } = useFetch(
-    `https://www.breakingbadapi.com/api/quotes/${counter}`
-  );
-
-  // console.log({ data, isLoading, hasError });
-
+  const { data, isLoading, hasError } = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`);
   const { author, quote } = !!data && data[0];
 
   return (
