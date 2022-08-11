@@ -23,9 +23,9 @@ import './index.css';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <BrowserRouter>
-    {/* <React.StrictMode> */}
-      <MainApp />
-    {/* </React.StrictMode> */}
-  </BrowserRouter>  
+    <MainApp/>
+  </BrowserRouter>
+  
 );

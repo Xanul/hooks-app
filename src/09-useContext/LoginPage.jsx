@@ -3,22 +3,28 @@ import { UserContext } from "./context/UserContext";
 
 export const LoginPage = () => {
 
-  const {user, setUser} = useContext(UserContext);
+  const newUser = {
+    id: 555,
+    name: 'Xanul',
+    email: 'xanul@gmail.com'
+  }
+
+  const {setUser, user, test} = useContext(UserContext);
 
   return (
     <>
-      <h1>Login Page</h1>
+      <h1>LoginPage</h1>
       <hr />
 
-      <pre aria-label="pre">
-        {JSON.stringify(user, null,3)}
+      <pre>
+        { JSON.stringify(user, null, 3) }
       </pre>
 
       <button 
         className="btn btn-primary"
-        onClick={() => setUser({id: 123, name:'Juan', email:'juan@google.com'})}
-        >
-        Set User
+        onClick={() => setUser(newUser)}
+      >
+          Establecer Usuario
       </button>
 
     </>

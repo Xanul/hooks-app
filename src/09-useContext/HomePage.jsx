@@ -1,25 +1,22 @@
-import { useContext } from "react"
-import { UserContext } from "./context/UserContext"
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
 
 export const HomePage = () => {
 
-  const {user} = useContext(UserContext)
+  const {user, hola, test} = useContext(UserContext);
+
+  console.log()
 
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>HomePage</h1>
       <hr />
 
-      <h4>{user?.name}</h4>
-      <h4>{user?.age}</h4>
-
-      <pre aria-label="pre">
-        { JSON.stringify(user) }
+      <h4>Bienvenido, {user?.name}</h4>
+      <pre>
+        { JSON.stringify(user, null, 3) }
       </pre>
-
-      <button className="btn btn-primary">
-        Set User
-      </button>
 
     </>
   )

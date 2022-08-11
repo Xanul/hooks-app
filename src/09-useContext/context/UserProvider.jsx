@@ -1,18 +1,23 @@
 import { useState } from "react";
-import { UserContext } from "./UserContext";
+import { UserContext } from "./UserContext"
 
-// const user = {
-//   name: 'Rodrigo',
-//   age: 32,
-//   smart: true
-// }
+export const UserProvider = ({ children }) => {
 
-export const UserProvider = ({children}) => {
+  // const user = {
+  //   id: 123,
+  //   name: 'Rodrigo Rivas',
+  //   email: 'rivas@gmail.com'
+  // }
+
+  const test = () => {
+    console.log(`Hola, ${user.name}`);
+  }
 
   const [user, setUser] = useState();
 
   return (
-    <UserContext.Provider value={{user, setUser}}>
+    // <UserContext.Provider value={{hola: 'Mundo', user: user, test}}>
+    <UserContext.Provider value={{user, test, setUser}}>
       { children }
     </UserContext.Provider>
   )
