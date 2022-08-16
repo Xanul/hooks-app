@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom"
 import { MainApp } from "../../src/09-useContext/MainApp";
-import {MemoryRouter} from "react-router-dom"
 
 
 describe('Pruebas en el componente <MainApp/>', () => {
@@ -9,12 +9,11 @@ describe('Pruebas en el componente <MainApp/>', () => {
 
     render(
       <MemoryRouter>
-        <MainApp />
+        <MainApp/>
       </MemoryRouter>
-      
     );
-    
-    expect(screen.getByText('Home Page')).toBeTruthy();
+
+    expect(screen.getByText('HomePage')).toBeTruthy();
 
   });
 
@@ -22,13 +21,13 @@ describe('Pruebas en el componente <MainApp/>', () => {
 
     render(
       <MemoryRouter initialEntries={['/login']}>
-        <MainApp />
+        <MainApp/>
       </MemoryRouter>
-      
     );
-    
-    expect(screen.getByText('Login Page')).toBeTruthy();
+
+    expect(screen.getByText('LoginPage')).toBeTruthy();
+    screen.debug();
 
   });
 
-})
+});

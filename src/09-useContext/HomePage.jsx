@@ -6,15 +6,13 @@ export const HomePage = () => {
 
   const {user, hola, test} = useContext(UserContext);
 
-  console.log()
-
   return (
     <>
       <h1>HomePage</h1>
       <hr />
 
       <h4>Bienvenido, {user?.name}</h4>
-      <pre>
+      <pre aria-label="pre">
         { JSON.stringify(user, null, 3) }
       </pre>
 

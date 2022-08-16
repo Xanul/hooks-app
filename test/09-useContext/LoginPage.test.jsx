@@ -2,14 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { UserContext } from "../../src/09-useContext/context/UserContext";
 import { LoginPage } from "../../src/09-useContext/LoginPage";
 
-
 describe('Pruebas en el componente <LoginPage/>', () => {
-
-  const user = {
-    id: 5,
-    name: 'Rodrigo',
-    email: 'rodrigo@gmail.com'
-  }
 
   test('Debe de mostrar el componente sin el usuario', () => {
 
@@ -19,10 +12,8 @@ describe('Pruebas en el componente <LoginPage/>', () => {
       </UserContext.Provider>
     );
 
-    // screen.debug()
     const preTag = screen.getByLabelText('pre');
-    expect(preTag.innerHTML).toBe('null')
-    
+    expect(preTag.innerHTML).toBe('null');
 
   });
 
@@ -36,11 +27,12 @@ describe('Pruebas en el componente <LoginPage/>', () => {
       </UserContext.Provider>
     );
 
-    const setBtn = screen.getByRole('button');
-    fireEvent.click(setBtn);
-    expect(setUserMock).toHaveBeenCalledWith({"email": "juan@google.com", "id": 123, "name": "Juan"});
+    const loginBtn = screen.getByRole('button');
+    fireEvent.click(loginBtn);
 
+    expect(setUserMock).toHaveBeenCalledWith({"email": "xanul@gmail.com", "id": 555, "name": "Xanul"});
+    
 
   });
 
-})
+});
